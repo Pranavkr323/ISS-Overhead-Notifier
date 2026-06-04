@@ -5,8 +5,9 @@ import time
 
 MY_LAT = 22.676908
 MY_LNG = 88.383886
-EMAIL = "PythonProjectDemo22@gmail.com"
-PASSWORD = "bkfopcjxsxiuhtmi"
+EMAIL = os.getenv("EMAIL")
+PASSWORD = os.getenv("PASSWORD")
+TO_EMAIL = os.getenv("TO_EMAIL")
 
 def is_near():
       response = requests.get(url="http://api.open-notify.org/iss-now.json")
@@ -46,7 +47,6 @@ while True:
             with smtp.SMTP("smtp.gmail.com", port= 587) as connection:
                   connection.starttls()
                   connection.login(user=EMAIL, password= PASSWORD)
-                  connection.sendmail(from_addr= EMAIL,
-                                    to_addrs= "pk2051872@gmail.com", 
-                                    msg= f"Subject: ISS above you!\n\nThe ISS is near your location go outside to see!")
+                  connection.sendmail( from_addr=EMAIL, to_addrs=TO_EMAIL,
+                                        msg=f"Subject: ISS above you!\n\nThe ISS is near your location go outside to see!" )
 
