@@ -2,6 +2,7 @@ import requests
 from datetime import datetime, UTC
 import smtplib as smtp
 import time
+import os
 
 MY_LAT = 22.676908
 MY_LNG = 88.383886
